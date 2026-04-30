@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://oexajvk3c6a3"]
+
+[ext_resource type="Script" uid="uid://cgk5xjc14i8y5" path="res://scripts/bullets/bone.gd" id="1_sxv2p"]
+[ext_resource type="Texture2D" uid="uid://bfypb52yxpkca" path="res://sprites/ima222221ge.png" id="2_sxv2p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_de08x"]
+size = Vector2(7.999998, 85.99998)
+
+[node name="RoaringBone" type="Area2D" unique_id=396810163]
+collision_layer = 3
+script = ExtResource("1_sxv2p")
+metadata/_custom_type_script = "uid://cgk5xjc14i8y5"
+
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1851431850]
+position = Vector2(-1.1920929e-07, -1.0000019)
+scale = Vector2(1.0000002, 1.0000002)
+shape = SubResource("RectangleShape2D_de08x")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1988343428]
+scale = Vector2(0.095, 0.095)
+texture = ExtResource("2_sxv2p")
+region_enabled = true
+region_rect = Rect2(0, 0, 1000, 1000)

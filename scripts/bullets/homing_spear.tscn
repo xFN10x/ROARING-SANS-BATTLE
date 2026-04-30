@@ -1,0 +1,311 @@
+[gd_scene format=3 uid="uid://cc37gwi4lb3ku"]
+
+[ext_resource type="Texture2D" uid="uid://bidbpxwu4vgia" path="res://sprites/ddkc2sy-707e75f5-6c22-4b37-a974-52de9e89de05.png" id="1_de08x"]
+[ext_resource type="Script" uid="uid://geyyto6p24f6" path="res://scripts/bullets/homing_spear.gd" id="2_de08x"]
+[ext_resource type="AudioStream" uid="uid://b1sudl20cgb0p" path="res://audio/mus_sfx_segapower.wav" id="3_de08x"]
+[ext_resource type="AudioStream" uid="uid://d227rqkf3le2g" path="res://audio/mus_sfx_rainbowbeam_1.wav" id="4_jwbdq"]
+[ext_resource type="Texture2D" uid="uid://dngdiqmt2xmjt" path="res://sprites/red_soul_normal.png" id="5_jwbdq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwbdq"]
+atlas = ExtResource("1_de08x")
+region = Rect2(5, 17, 42, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0hfq"]
+atlas = ExtResource("1_de08x")
+region = Rect2(189, 17, 44, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mw48w"]
+atlas = ExtResource("1_de08x")
+region = Rect2(238, 17, 44, 57)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3a38f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwbdq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_k0hfq")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_mw48w")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_k0hfq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 4
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5974604]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.033333335),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area/HomingSpear:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Lazer:self_modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_mw48w"]
+resource_name = "spawn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [6.283185307179586, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area/HomingSpear:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SegaPower")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Lazer:self_modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3a38f"]
+_data = {
+&"RESET": SubResource("Animation_k0hfq"),
+&"spawn": SubResource("Animation_mw48w")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_de08x"]
+size = Vector2(34.999992, 39.999992)
+
+[sub_resource type="Gradient" id="Gradient_de08x"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jwbdq"]
+gradient = SubResource("Gradient_de08x")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwbdq"]
+size = Vector2(26, 4168.006)
+
+[sub_resource type="Animation" id="Animation_de08x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BeamSpr1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(19, 665)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BeamSpr2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(9, 665)]
+}
+
+[sub_resource type="Animation" id="Animation_jwbdq"]
+resource_name = "beam"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BeamSpr1:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(20.92, 6199.93), Vector2(19, 6199.93)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BeamSpr2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(6.795, 6199.93), Vector2(9, 6199.93)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i062b"]
+_data = {
+&"RESET": SubResource("Animation_de08x"),
+&"beam": SubResource("Animation_jwbdq")
+}
+
+[node name="HomingSpear" type="AnimatedSprite2D" unique_id=1813057212]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 1
+z_as_relative = false
+rotation = 4.6857247
+scale = Vector2(-0.99999857, -0.99999857)
+sprite_frames = SubResource("SpriteFrames_3a38f")
+script = ExtResource("2_de08x")
+metadata/_custom_type_script = "uid://geyyto6p24f6"
+
+[node name="Animations" type="AnimationPlayer" parent="." unique_id=443985661]
+libraries/ = SubResource("AnimationLibrary_3a38f")
+
+[node name="SegaPower" type="AudioStreamPlayer" parent="." unique_id=1780325815]
+stream = ExtResource("3_de08x")
+volume_db = -10.505
+bus = &"Main"
+
+[node name="SndArrow" type="AudioStreamPlayer" parent="." unique_id=335889670]
+stream = ExtResource("4_jwbdq")
+volume_db = -10.505
+bus = &"Main"
+
+[node name="Area" type="Area2D" parent="." unique_id=1659372443]
+collision_layer = 3
+
+[node name="HomingSpear" type="CollisionShape2D" parent="Area" unique_id=1851431850]
+position = Vector2(0.5000006, 1.9999993)
+scale = Vector2(1.0000002, 1.0000002)
+shape = SubResource("RectangleShape2D_de08x")
+
+[node name="Beam" type="Area2D" parent="." unique_id=1197116219]
+visible = false
+z_index = -1
+collision_layer = 3
+
+[node name="BeamSpr1" type="Sprite2D" parent="Beam" unique_id=500753990]
+self_modulate = Color(1, 1, 1, 0.41568628)
+position = Vector2(19, 665)
+rotation = 1.5707964
+scale = Vector2(48.36006, 26.490456)
+texture = SubResource("GradientTexture1D_jwbdq")
+
+[node name="BeamSpr2" type="Sprite2D" parent="Beam" unique_id=590897313]
+self_modulate = Color(1, 1, 1, 0.4627451)
+position = Vector2(9, 665)
+rotation = 1.5707964
+scale = Vector2(48.36006, 26.490456)
+texture = SubResource("GradientTexture1D_jwbdq")
+
+[node name="BeamSpr3" type="Sprite2D" parent="Beam" unique_id=946782369]
+position = Vector2(13.999756, 6199.9297)
+rotation = 1.5707964
+scale = Vector2(48.36006, 26.490456)
+texture = SubResource("GradientTexture1D_jwbdq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Beam" unique_id=2079222512]
+position = Vector2(0, 2074.003)
+shape = SubResource("RectangleShape2D_jwbdq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Beam" unique_id=2025482942]
+libraries/ = SubResource("AnimationLibrary_i062b")
+
+[node name="Lazer" type="Sprite2D" parent="." unique_id=1620463911]
+modulate = Color(1, 0, 0, 1)
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(-1.4305115e-06, 0)
+rotation = 1.5707964
+scale = Vector2(100000, 1)
+texture = ExtResource("5_jwbdq")
+region_enabled = true
+region_rect = Rect2(8, 7, 1, 2)
