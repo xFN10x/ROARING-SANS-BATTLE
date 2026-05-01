@@ -30,6 +30,9 @@ enum MenuMode {
 	ATTACK,
 }
 
+class DialougeEntry:
+	pass
+
 static var paused: bool = false
 
 var sine := sin(Time.get_ticks_msec() * 1000.0)
@@ -194,8 +197,8 @@ var greenSoulProtectRight: Tween
 var greenSoulRotate = deg_to_rad(90)
 
 var checkText: String = """* ROARING SANS - ATK -∞ DEF -∞
-* Kris learned everything about
-	this enemy.
+* He was a shopkeeper, now hes
+	this.
 """
 
 var enemyMaxHealth := 99999999
@@ -561,8 +564,8 @@ func attack() -> void:
 				spawnBone(Vector2(1.37, 1.37), Vector2(730, 348.0))
 				await get_tree().create_timer(time).timeout
 			
-			spawnHomingArrow(Vector2(2,2.2), Vector2(500, 252), Vector2(700, 232))
-			spawnHomingArrow(Vector2(2,2.2), Vector2(500, 348), Vector2(700, 368))
+			spawnHomingArrow(Vector2(2,2.2), Vector2(500, 252), Vector2(700, 252))
+			spawnHomingArrow(Vector2(2,2.2), Vector2(500, 348), Vector2(700, 348))
 			
 			spawnBone(Vector2(1.37, 1.37), Vector2(730, 252))
 			await get_tree().create_timer(time).timeout
@@ -575,13 +578,15 @@ func attack() -> void:
 			await setBoxPos(turn4box) 
 			redsoul(turn4box)
 			var time = 0.1
-			for i in range(20):
-				for i2 in range(4):
-					spawnBone(Vector2(1, 1), Vector2(730, 240 + (sine * 20)))
-					spawnBone(Vector2(1, 1), Vector2(730, 358 + (sine * 20)))
+			var counter = 0
+			for i in range(10):
+				for i2 in range(10):
+					spawnBone(Vector2(1, 1), Vector2(730, 230 + (sin(counter /2) * 20)))
+					spawnBone(Vector2(1, 1), Vector2(730, 368 + (sin(counter /2) * 20)))
+					counter += 1
 					await get_tree().create_timer(time).timeout
 				var pos = randf_range(242.0, 399.0)
-				spawnHomingArrow(Vector2(2,2), Vector2(143, pos), Vector2(480, pos))
+				spawnHomingArrow(Vector2(1.5,2), Vector2(pos, 143), Vector2(pos, 0))
 			
 			
 			await get_tree().create_timer(2).timeout
@@ -594,8 +599,6 @@ func attack() -> void:
 
 func _process(delta: float) -> void:
 	var mult := delta / 0.0333333
-	
-	sine = sin(Time.get_ticks_msec() * 1000.0)
 	
 	$"Box/Box/Options/0/HPBar".value = enemyHealth
 	

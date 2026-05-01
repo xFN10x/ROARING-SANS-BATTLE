@@ -1,21 +1,22 @@
-[gd_scene format=3 uid="uid://cc37gwi4lb3ku"]
+[gd_scene format=3 uid="uid://by8i5t05b4f7e"]
 
-[ext_resource type="Texture2D" uid="uid://bidbpxwu4vgia" path="res://sprites/ddkc2sy-707e75f5-6c22-4b37-a974-52de9e89de05.png" id="1_de08x"]
-[ext_resource type="Script" uid="uid://geyyto6p24f6" path="res://scripts/bullets/homing_spear.gd" id="2_de08x"]
-[ext_resource type="AudioStream" uid="uid://b1sudl20cgb0p" path="res://audio/mus_sfx_segapower.wav" id="3_de08x"]
-[ext_resource type="AudioStream" uid="uid://d227rqkf3le2g" path="res://audio/mus_sfx_rainbowbeam_1.wav" id="4_jwbdq"]
-[ext_resource type="Texture2D" uid="uid://dngdiqmt2xmjt" path="res://sprites/red_soul_normal.png" id="5_jwbdq"]
+[ext_resource type="Texture2D" uid="uid://bidbpxwu4vgia" path="res://sprites/ddkc2sy-707e75f5-6c22-4b37-a974-52de9e89de05.png" id="1_ixfkm"]
+[ext_resource type="Script" uid="uid://boa58lbfiqji7" path="res://scripts/bullets/fountainblaster.gd" id="2_guf0t"]
+[ext_resource type="AudioStream" uid="uid://b1sudl20cgb0p" path="res://audio/mus_sfx_segapower.wav" id="3_2wod7"]
+[ext_resource type="AudioStream" uid="uid://d227rqkf3le2g" path="res://audio/mus_sfx_rainbowbeam_1.wav" id="4_5u2ic"]
+[ext_resource type="Texture2D" uid="uid://dngdiqmt2xmjt" path="res://sprites/red_soul_normal.png" id="5_deii0"]
+[ext_resource type="Texture2D" uid="uid://c8axj0ourjp0i" path="res://sprites/blackole.png" id="6_vqka6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jwbdq"]
-atlas = ExtResource("1_de08x")
+atlas = ExtResource("1_ixfkm")
 region = Rect2(5, 17, 42, 57)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k0hfq"]
-atlas = ExtResource("1_de08x")
+atlas = ExtResource("1_ixfkm")
 region = Rect2(189, 17, 44, 57)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mw48w"]
-atlas = ExtResource("1_de08x")
+atlas = ExtResource("1_ixfkm")
 region = Rect2(238, 17, 44, 57)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3a38f"]
@@ -64,7 +65,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0.0]
+"values": [1.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -249,25 +250,43 @@ _data = {
 &"beam": SubResource("Animation_jwbdq")
 }
 
-[node name="HomingSpear" type="AnimatedSprite2D" unique_id=1167637200]
-self_modulate = Color(1, 1, 1, 0)
+[sub_resource type="Curve" id="Curve_ygwi7"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.05384615, 0.9897335), 0.0, 0.0, 0, 0, Vector2(0.5, 0.82546896), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_rs5t1"]
+curve = SubResource("Curve_ygwi7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pwcl8"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(20, 18, 2)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -59.99999
+angle_max = 60.00001
+gravity = Vector3(0, -50, 0)
+scale_min = 0.19999999
+scale_max = 0.19999999
+scale_curve = SubResource("CurveTexture_rs5t1")
+
+[node name="FountainBlaster" type="AnimatedSprite2D" unique_id=1698446676]
 z_index = 1
 z_as_relative = false
 scale = Vector2(-0.99999857, -0.99999857)
 sprite_frames = SubResource("SpriteFrames_3a38f")
-script = ExtResource("2_de08x")
-metadata/_custom_type_script = "uid://geyyto6p24f6"
+script = ExtResource("2_guf0t")
+metadata/_custom_type_script = "uid://boa58lbfiqji7"
 
 [node name="Animations" type="AnimationPlayer" parent="." unique_id=443985661]
 libraries/ = SubResource("AnimationLibrary_3a38f")
 
 [node name="SegaPower" type="AudioStreamPlayer" parent="." unique_id=1780325815]
-stream = ExtResource("3_de08x")
+stream = ExtResource("3_2wod7")
 volume_db = -10.505
 bus = &"Main"
 
 [node name="SndArrow" type="AudioStreamPlayer" parent="." unique_id=335889670]
-stream = ExtResource("4_jwbdq")
+stream = ExtResource("4_5u2ic")
 volume_db = -10.505
 bus = &"Main"
 
@@ -317,6 +336,13 @@ self_modulate = Color(1, 1, 1, 0)
 position = Vector2(-1.4305115e-06, 0)
 rotation = 1.5707964
 scale = Vector2(100000, 1)
-texture = ExtResource("5_jwbdq")
+texture = ExtResource("5_deii0")
 region_enabled = true
 region_rect = Rect2(8, 7, 1, 2)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1130411671]
+z_index = -1
+amount = 80
+texture = ExtResource("6_vqka6")
+lifetime = 9.549999999999999
+process_material = SubResource("ParticleProcessMaterial_pwcl8")
