@@ -237,7 +237,7 @@ _data = {
 &"beam": SubResource("Animation_jwbdq")
 }
 
-[node name="HomingSpear" type="AnimatedSprite2D" unique_id=1813057212]
+[node name="HomingSpear" type="AnimatedSprite2D" unique_id=1167637200]
 self_modulate = Color(1, 1, 1, 0)
 z_index = 1
 z_as_relative = false

@@ -4,7 +4,29 @@
 [ext_resource type="Texture2D" uid="uid://bfypb52yxpkca" path="res://sprites/ima222221ge.png" id="2_sxv2p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_de08x"]
-size = Vector2(7.999998, 85.99998)
+size = Vector2(4.999999, 72.999985)
+
+[sub_resource type="Curve" id="Curve_sxv2p"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.6701571, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_sxv2p"]
+curve = SubResource("Curve_sxv2p")
+
+[sub_resource type="Curve" id="Curve_g5r1s"]
+_data = [Vector2(0, 0.9373602), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8081v"]
+curve = SubResource("Curve_g5r1s")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a7xwi"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 0.099999994
+scale_max = 0.099999994
+scale_curve = SubResource("CurveTexture_8081v")
+alpha_curve = SubResource("CurveTexture_sxv2p")
 
 [node name="RoaringBone" type="Area2D" unique_id=396810163]
 collision_layer = 3
@@ -12,12 +34,22 @@ script = ExtResource("1_sxv2p")
 metadata/_custom_type_script = "uid://cgk5xjc14i8y5"
 
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1851431850]
-position = Vector2(-1.1920929e-07, -1.0000019)
+position = Vector2(0.49999994, -1.5000001)
 scale = Vector2(1.0000002, 1.0000002)
 shape = SubResource("RectangleShape2D_de08x")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1988343428]
+z_as_relative = false
 scale = Vector2(0.095, 0.095)
 texture = ExtResource("2_sxv2p")
 region_enabled = true
 region_rect = Rect2(0, 0, 1000, 1000)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite2D" unique_id=1956028242]
+z_index = -1
+amount = 100
+texture = ExtResource("2_sxv2p")
+lifetime = 3.44
+speed_scale = 3.0
+visibility_rect = Rect2(-7000, -1000, 14000, 2000)
+process_material = SubResource("ParticleProcessMaterial_a7xwi")

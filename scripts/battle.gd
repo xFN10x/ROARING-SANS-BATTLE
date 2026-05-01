@@ -83,9 +83,8 @@ var boxNode: MarginContainer
 # Box Positions Vec4(x,y, width, height)
 var defaultPos := Vector4(32, 250, 575, 140)
 var spearAtkPos := Vector4(277.5, 201.5, 85, 81)
-var redAttack1AtkPos := Vector4(185, 190, 227, 200)
-var redAttack2AtkPos := Vector4(285, 300, 75, 90)
-var redAttack3AtkPos := Vector4(32, 90, 575, 300)
+var turn1box := Vector4(32, 130.0, 575, 259.0)
+var turn4box := Vector4(215.0, 215.0, 210.0, 174.0)
 
 var page := 0
 
@@ -318,11 +317,20 @@ func restart() -> void:
 	paused = false
 	AudioServer.set_bus_mute(1, false)
 
-func spawnHomingArrow(sca: Vector2 = Vector2(1,1)):
+func spawnHomingArrow(sca: Vector2 = Vector2(1,1), pos := Vector2(randi_range(0,640), randi_range(0,480)), target := soulNode.global_position):
 	var bullet: HomingSpear = preload("res://scripts/bullets/homing_spear.tscn").instantiate()
 	bullet.battleManager = self
-	bullet.position = Vector2(randi_range(0,640), randi_range(0,480))
+	bullet.position = pos
 	bullet.scale = sca
+	bullet.target = target
+	Bullets.add_child(bullet)
+	
+func spawnBone(scale: Vector2, pos : Vector2, speed := Vector2.LEFT):
+	var bullet: RoaringBone = preload("res://scripts/bullets/bone.tscn").instantiate()
+	bullet.battleManager = self
+	bullet.position = pos
+	bullet.speed = speed
+	bullet.scale = scale
 	Bullets.add_child(bullet)
 	
 func spawnShooterSpears():
@@ -514,42 +522,10 @@ func attack() -> void:
 	totalTurns += 1
 	menuMode = MenuMode.ENEMY_TURN
 	turn += 1
-	"""
-		await setBoxPos(spearAtkPos)
-			soulMode = SoulMode.GREEN
-			soulNode.position = greenSoulPos
-			soulNode.visible = true
-			$GlobalAnimations.play("fade")
-			
-			var dur2 = 0.25
-			
-			
-			var dur3 = 0.15
-			var spe = 27
-			
-			for i2 in range(4):
-				for i in range(3):
-					spawnArrow(spe, ArrowBullet.Direction.DOWN)
-					await get_tree().create_timer(dur3).timeout
-				await get_tree().create_timer(dur2).timeout
-				spawnArrow(spe + 3, ArrowBullet.Direction.RIGHT)
-				await get_tree().create_timer(dur2).timeout
-				for i in range(3):
-					spawnArrow(spe, ArrowBullet.Direction.DOWN)
-					await get_tree().create_timer(dur3).timeout
-				await get_tree().create_timer(dur2).timeout
-				spawnArrow(spe + 3, ArrowBullet.Direction.LEFT)
-				await get_tree().create_timer(dur2).timeout
-			$GlobalAnimations.play_backwards("fade")
-			await get_tree().create_timer(1).timeout
-			
-			endAttack()
-	"""
 	match turn:
-		# test attack
 		1:
-			await setBoxPos(redAttack3AtkPos) 
-			redsoul(redAttack3AtkPos)
+			await setBoxPos(turn1box) 
+			redsoul(turn1box)
 			
 			for i in range(5):
 				spawnHomingArrow(Vector2(-1.5, -1.5))
@@ -557,8 +533,8 @@ func attack() -> void:
 			
 			await get_tree().create_timer(3).timeout
 		2:
-			await setBoxPos(redAttack3AtkPos) 
-			redsoul(redAttack3AtkPos)
+			await setBoxPos(turn1box) 
+			redsoul(turn1box)
 			
 			for i in range(15):
 				spawnHomingArrow(Vector2(-.8, -1.5))
@@ -566,12 +542,26 @@ func attack() -> void:
 			
 			await get_tree().create_timer(3).timeout
 		3:
-			await setBoxPos(redAttack3AtkPos) 
-			redsoul(redAttack3AtkPos)
+			await setBoxPos(turn1box) 
+			redsoul(turn1box)
 			
 			for i in range(60):
 				spawnHomingArrow(Vector2(-.5, -1))
 				await get_tree().create_timer(0.1).timeout
+			
+			await get_tree().create_timer(3).timeout
+		4:
+			await setBoxPos(turn4box) 
+			redsoul(turn4box)
+			var time = 0.4
+			for i in range(10):
+				spawnBone(Vector2(1.37, 1.37), Vector2(730, 252))
+				await get_tree().create_timer(time).timeout
+				spawnBone(Vector2(1.37, 1.37), Vector2(730, 348.0))
+				await get_tree().create_timer(time).timeout
+			
+			spawnHomingArrow(Vector2(2,2.2), Vector2(500, 252), Vector2(0, 252))
+			spawnHomingArrow(Vector2(2,2.2), Vector2(500, 348), Vector2(0, 348))
 			
 			await get_tree().create_timer(3).timeout
 			

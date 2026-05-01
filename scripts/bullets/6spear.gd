@@ -33,7 +33,7 @@ func addSpears() -> void:
 	print(spearScene)
 	print("clearing 2")
 	for n in get_children():
-		if not n is StaticSpear: continue
+		if not n is RoaringBone: continue
 		remove_child(n)
 		n.queue_free()
 	for i in range(spears):
@@ -53,7 +53,7 @@ func _draw() -> void:
 func _physics_process(delta: float) -> void:
 	var chilren = get_children()
 	for v in chilren:
-		if v is StaticSpear:
+		if v is RoaringBone:
 			var i = chilren.find(v)
 			v.position = Vector2.from_angle(deg_to_rad((angles * i) + angleOffset)) * initRadius
 			v.look_at(global_position)

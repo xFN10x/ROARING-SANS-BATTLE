@@ -1105,9 +1105,9 @@ text = "99 / 99"
 label_settings = SubResource("LabelSettings_v7i3o")
 
 [node name="Box" type="MarginContainer" parent="." unique_id=1884231038]
-offset_left = 32.0
-offset_top = 259.0
-offset_right = 608.0
+offset_left = 27.5
+offset_top = 249.0
+offset_right = 612.5
 offset_bottom = 389.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_constants/margin_bottom = 0

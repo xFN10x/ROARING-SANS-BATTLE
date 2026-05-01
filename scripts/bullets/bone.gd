@@ -1,8 +1,11 @@
 extends Area2D
-class_name StaticSpear
+class_name RoaringBone
 
 var battleManager: BattleManager;
 var soul: Node2D
+var dir := Vector2.RIGHT
+var speed = Vector2(0,0)
+var vel = Vector2(0,0)
 
 func remove() -> void:
 	queue_free()
@@ -14,4 +17,8 @@ func _ready() -> void:
 		if body.name == "Soul":
 			battleManager.damagePlr(randi_range(10,20))
 		)
+		
+func _process(delta: float) -> void:
+	vel += speed
+	position += dir * vel
 	

@@ -4,7 +4,7 @@ class_name HomingSpear
 var battleManager: BattleManager;
 var soul
 var moving := false
-var target: Vector2 = Vector2(300, 480/2)
+var target = null
 
 func remove() -> void:
 	queue_free()
@@ -23,15 +23,16 @@ func _ready() -> void:
 	$Beam/CollisionShape2D.disabled = true
 	if battleManager != null:
 		soul = battleManager.soulNode
-		target = Vector2(soul.global_position.x + randi_range(-20,20), soul.global_position.y + randi_range(-20,20))
-		rotation = position.angle_to_point(target) + deg_to_rad(90)
+		if target == null:
+			target = Vector2(soul.global_position.x + randi_range(-20,20), soul.global_position.y + randi_range(-20,20))
 	else:
 		position = Vector2(640/2, 480/2)
+		target = Vector2(0, position.y)
+	rotation = position.angle_to_point(target) + deg_to_rad(90)
 	$Animations.play("spawn")
 	await $Animations.animation_finished
 	await get_tree().create_timer(1).timeout
-	self.animation = "new_animation"
-	self.play()
+	self.play("new_animation")
 	$Lazer.visible = false
 	$Beam.visible = true
 	$SndArrow.play()
