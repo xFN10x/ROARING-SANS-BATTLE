@@ -52,7 +52,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-1.5974604]
+"values": [0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -61,10 +61,10 @@ tracks/1/path = NodePath(".:self_modulate:a")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(-0.033333335),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0.0]
+"values": [1.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -187,7 +187,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(19, 665)]
+"values": [Vector2(18, 6199.93)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -199,7 +199,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(9, 665)]
+"values": [Vector2(18, 6199.93)]
 }
 
 [sub_resource type="Animation" id="Animation_jwbdq"]
@@ -216,7 +216,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(20.92, 6199.93), Vector2(19, 6199.93)]
+"values": [Vector2(18, 6199.93), Vector2(20, 6199.93)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -228,7 +228,19 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(6.795, 6199.93), Vector2(9, 6199.93)]
+"values": [Vector2(8, 6199.93), Vector2(10, 6199.93)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BeamSpr3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(13, 6199.93), Vector2(13, 6199.93)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i062b"]
@@ -238,10 +250,8 @@ _data = {
 }
 
 [node name="HomingSpear" type="AnimatedSprite2D" unique_id=1167637200]
-self_modulate = Color(1, 1, 1, 0)
 z_index = 1
 z_as_relative = false
-rotation = 4.6857247
 scale = Vector2(-0.99999857, -0.99999857)
 sprite_frames = SubResource("SpriteFrames_3a38f")
 script = ExtResource("2_de08x")
@@ -269,26 +279,25 @@ scale = Vector2(1.0000002, 1.0000002)
 shape = SubResource("RectangleShape2D_de08x")
 
 [node name="Beam" type="Area2D" parent="." unique_id=1197116219]
-visible = false
 z_index = -1
 collision_layer = 3
 
 [node name="BeamSpr1" type="Sprite2D" parent="Beam" unique_id=500753990]
 self_modulate = Color(1, 1, 1, 0.41568628)
-position = Vector2(19, 665)
+position = Vector2(18, 6199.93)
 rotation = 1.5707964
 scale = Vector2(48.36006, 26.490456)
 texture = SubResource("GradientTexture1D_jwbdq")
 
 [node name="BeamSpr2" type="Sprite2D" parent="Beam" unique_id=590897313]
 self_modulate = Color(1, 1, 1, 0.4627451)
-position = Vector2(9, 665)
+position = Vector2(18, 6199.93)
 rotation = 1.5707964
 scale = Vector2(48.36006, 26.490456)
 texture = SubResource("GradientTexture1D_jwbdq")
 
 [node name="BeamSpr3" type="Sprite2D" parent="Beam" unique_id=946782369]
-position = Vector2(13.999756, 6199.9297)
+position = Vector2(13, 6199.93)
 rotation = 1.5707964
 scale = Vector2(48.36006, 26.490456)
 texture = SubResource("GradientTexture1D_jwbdq")

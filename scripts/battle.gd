@@ -32,6 +32,7 @@ enum MenuMode {
 
 static var paused: bool = false
 
+var sine := sin(Time.get_ticks_msec() * 1000.0)
 var ArrowBullet = preload("res://scripts/bullets/Arrow.gd")
 
 var totalDamageTaken := 0
@@ -317,7 +318,7 @@ func restart() -> void:
 	paused = false
 	AudioServer.set_bus_mute(1, false)
 
-func spawnHomingArrow(sca: Vector2 = Vector2(1,1), pos := Vector2(randi_range(0,640), randi_range(0,480)), target := soulNode.global_position):
+func spawnHomingArrow(sca: Vector2 = Vector2(1,1), pos := Vector2(randi_range(0,640), randi_range(0,480)), target := Vector2(soulNode.global_position.x + randi_range(-20,20), soulNode.global_position.y + randi_range(-20,20))):
 	var bullet: HomingSpear = preload("res://scripts/bullets/homing_spear.tscn").instantiate()
 	bullet.battleManager = self
 	bullet.position = pos
@@ -560,10 +561,30 @@ func attack() -> void:
 				spawnBone(Vector2(1.37, 1.37), Vector2(730, 348.0))
 				await get_tree().create_timer(time).timeout
 			
-			spawnHomingArrow(Vector2(2,2.2), Vector2(500, 252), Vector2(0, 252))
-			spawnHomingArrow(Vector2(2,2.2), Vector2(500, 348), Vector2(0, 348))
+			spawnHomingArrow(Vector2(2,2.2), Vector2(500, 252), Vector2(700, 232))
+			spawnHomingArrow(Vector2(2,2.2), Vector2(500, 348), Vector2(700, 368))
 			
-			await get_tree().create_timer(3).timeout
+			spawnBone(Vector2(1.37, 1.37), Vector2(730, 252))
+			await get_tree().create_timer(time).timeout
+			spawnBone(Vector2(1.37, 1.37), Vector2(730, 348.0))
+			await get_tree().create_timer(time).timeout
+			
+			await get_tree().create_timer(2).timeout
+			
+		5:
+			await setBoxPos(turn4box) 
+			redsoul(turn4box)
+			var time = 0.1
+			for i in range(20):
+				for i2 in range(4):
+					spawnBone(Vector2(1, 1), Vector2(730, 240 + (sine * 20)))
+					spawnBone(Vector2(1, 1), Vector2(730, 358 + (sine * 20)))
+					await get_tree().create_timer(time).timeout
+				var pos = randf_range(242.0, 399.0)
+				spawnHomingArrow(Vector2(2,2), Vector2(143, pos), Vector2(480, pos))
+			
+			
+			await get_tree().create_timer(2).timeout
 			
 	await get_tree().create_timer(1).timeout
 	if paused: return
@@ -573,6 +594,8 @@ func attack() -> void:
 
 func _process(delta: float) -> void:
 	var mult := delta / 0.0333333
+	
+	sine = sin(Time.get_ticks_msec() * 1000.0)
 	
 	$"Box/Box/Options/0/HPBar".value = enemyHealth
 	
@@ -810,7 +833,11 @@ func _process(delta: float) -> void:
 					3:
 						tp = min(100, tp + 16)
 						defenseIncreaseCounter = 1
-						attack()
+						if currentdia >= sansText.size():
+							currentdia = 5
+						menuMode = MenuMode.NO_MODE
+						showText(sansText.get(currentdia), 1)
+						currentdia += 1
 				selectedButton = 0
 				soulNode.position = Vector2(999,999)
 				return

@@ -7,7 +7,7 @@
 size = Vector2(4.999999, 72.999985)
 
 [sub_resource type="Curve" id="Curve_sxv2p"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.6701571, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.4809844), 0.0, 0.0, 0, 0, Vector2(0.6701571, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_sxv2p"]
@@ -26,9 +26,11 @@ gravity = Vector3(0, 0, 0)
 scale_min = 0.099999994
 scale_max = 0.099999994
 scale_curve = SubResource("CurveTexture_8081v")
+color = Color(0.52, 0.52, 0.52, 1)
 alpha_curve = SubResource("CurveTexture_sxv2p")
 
 [node name="RoaringBone" type="Area2D" unique_id=396810163]
+z_index = 1
 collision_layer = 3
 script = ExtResource("1_sxv2p")
 metadata/_custom_type_script = "uid://cgk5xjc14i8y5"
@@ -39,7 +41,6 @@ scale = Vector2(1.0000002, 1.0000002)
 shape = SubResource("RectangleShape2D_de08x")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1988343428]
-z_as_relative = false
 scale = Vector2(0.095, 0.095)
 texture = ExtResource("2_sxv2p")
 region_enabled = true
@@ -47,7 +48,7 @@ region_rect = Rect2(0, 0, 1000, 1000)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite2D" unique_id=1956028242]
 z_index = -1
-amount = 100
+amount = 200
 texture = ExtResource("2_sxv2p")
 lifetime = 3.44
 speed_scale = 3.0
