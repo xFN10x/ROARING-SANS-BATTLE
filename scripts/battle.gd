@@ -725,7 +725,6 @@ func _process(delta: float) -> void:
 				enemyHealth -= damage
 				print("enemy now at: "+str(enemyHealth)+" hp")
 				if enemyHealth <= 0:
-					$Undyne/BodyAnimation.play("ohno")
 					AudioServer.set_bus_mute(1, true)
 					$GlobalAnimations.play("end")
 					return
