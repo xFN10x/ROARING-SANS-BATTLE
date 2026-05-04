@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://tnvsoqevld4f"]
+
+[ext_resource type="Texture2D" uid="uid://ck25h8urkyigd" path="res://sprites/Untitled.png" id="1_clpk6"]
+[ext_resource type="Script" uid="uid://eyc8sp71tahk" path="res://scripts/bullets/bomb.gd" id="1_sq07h"]
+[ext_resource type="AudioStream" uid="uid://b1sudl20cgb0p" path="res://audio/mus_sfx_segapower.wav" id="2_yj6ll"]
+[ext_resource type="AudioStream" uid="uid://d227rqkf3le2g" path="res://audio/mus_sfx_rainbowbeam_1.wav" id="3_7tpfj"]
+[ext_resource type="Texture2D" uid="uid://dqwrsnlum8j6t" path="res://sprites/Unti5tled.png" id="5_7tpfj"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sq07h"]
+friction = 0.81
+bounce = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_psx6j"]
+radius = 18.77
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sq07h"]
+radius = 62.5
+
+[node name="Bomb" type="RigidBody2D" unique_id=1312201788]
+collision_layer = 8
+collision_mask = 8
+physics_material_override = SubResource("PhysicsMaterial_sq07h")
+linear_velocity = Vector2(300, -20)
+script = ExtResource("1_sq07h")
+
+[node name="MusSfxSegapower" type="AudioStreamPlayer" parent="." unique_id=344892519]
+stream = ExtResource("2_yj6ll")
+pitch_scale = 6.56
+bus = &"Main"
+
+[node name="MusSfxRainbowbeam1" type="AudioStreamPlayer" parent="." unique_id=402629882]
+stream = ExtResource("3_7tpfj")
+volume_db = 24.0
+pitch_scale = 2.47
+bus = &"Main"
+
+[node name="Main" type="CollisionShape2D" parent="." unique_id=166950559]
+z_index = 1
+shape = SubResource("CircleShape2D_psx6j")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1171306]
+scale = Vector2(0.065, 0.065)
+texture = ExtResource("1_clpk6")
+
+[node name="HB" type="Area2D" parent="." unique_id=1270038385]
+z_index = 1
+collision_layer = 16
+collision_mask = 16
+
+[node name="HB" type="CollisionShape2D" parent="HB" unique_id=1191672062]
+shape = SubResource("CircleShape2D_sq07h")
+debug_color = Color(0.7, 0, 0, 0.41960785)
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1291127677]
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("5_7tpfj")

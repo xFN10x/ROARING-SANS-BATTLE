@@ -10,11 +10,7 @@ func remove() -> void:
 	queue_free()
 
 func _ready() -> void:
-	$Area.body_entered.connect(func (other: Node2D):
-		if other.name == "Soul":
-			battleManager.damagePlr(randi_range(15,25))
-		)
-		
+	stop()
 	$Beam.body_entered.connect(func (other: Node2D):
 		if other.name == "Soul":
 			battleManager.damagePlr(randi_range(15,25))
@@ -31,6 +27,7 @@ func _ready() -> void:
 	rotation = position.angle_to_point(target) + deg_to_rad(90)
 	$Animations.play("spawn")
 	await $Animations.animation_finished
+	play("default")
 	await get_tree().create_timer(1).timeout
 	self.play("new_animation")
 	$Lazer.visible = false

@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bidbpxwu4vgia" path="res://sprites/ddkc2sy-707e75f5-6c22-4b37-a974-52de9e89de05.png" id="1_de08x"]
 [ext_resource type="Script" uid="uid://geyyto6p24f6" path="res://scripts/bullets/homing_spear.gd" id="2_de08x"]
+[ext_resource type="Texture2D" uid="uid://cy2k48rrsr54f" path="res://sprites/blasters.png" id="2_i062b"]
 [ext_resource type="AudioStream" uid="uid://b1sudl20cgb0p" path="res://audio/mus_sfx_segapower.wav" id="3_de08x"]
 [ext_resource type="AudioStream" uid="uid://d227rqkf3le2g" path="res://audio/mus_sfx_rainbowbeam_1.wav" id="4_jwbdq"]
 [ext_resource type="Texture2D" uid="uid://dngdiqmt2xmjt" path="res://sprites/red_soul_normal.png" id="5_jwbdq"]
@@ -10,30 +11,58 @@
 atlas = ExtResource("1_de08x")
 region = Rect2(5, 17, 42, 57)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k0hfq"]
-atlas = ExtResource("1_de08x")
-region = Rect2(189, 17, 44, 57)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3a38f"]
+atlas = ExtResource("2_i062b")
+region = Rect2(0, 0, 57, 57)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mw48w"]
-atlas = ExtResource("1_de08x")
-region = Rect2(238, 17, 44, 57)
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxkx7"]
+atlas = ExtResource("2_i062b")
+region = Rect2(57, 0, 57, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpyry"]
+atlas = ExtResource("2_i062b")
+region = Rect2(114, 0, 57, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7hws"]
+atlas = ExtResource("2_i062b")
+region = Rect2(171, 0, 57, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i062b"]
+atlas = ExtResource("2_i062b")
+region = Rect2(285, 0, 57, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0hfq"]
+atlas = ExtResource("2_i062b")
+region = Rect2(228, 0, 57, 57)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3a38f"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jwbdq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3a38f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxkx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jpyry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7hws")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 0.3,
-"texture": SubResource("AtlasTexture_k0hfq")
+"texture": SubResource("AtlasTexture_i062b")
 }, {
 "duration": 0.3,
-"texture": SubResource("AtlasTexture_mw48w")
+"texture": SubResource("AtlasTexture_k0hfq")
 }],
 "loop": true,
 "name": &"new_animation",
@@ -69,22 +98,10 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Area/HomingSpear:disabled")
+tracks/2/path = NodePath("Lazer:self_modulate:a")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Lazer:self_modulate:a")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -118,25 +135,13 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0, 1.0]
 }
-tracks/2/type = "value"
+tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Area/HomingSpear:disabled")
+tracks/2/path = NodePath("SegaPower")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("SegaPower")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -144,13 +149,13 @@ tracks/3/keys = {
 "method": &"play"
 }]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Lazer:self_modulate:a")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Lazer:self_modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -162,9 +167,6 @@ _data = {
 &"RESET": SubResource("Animation_k0hfq"),
 &"spawn": SubResource("Animation_mw48w")
 }
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_de08x"]
-size = Vector2(34.999992, 39.999992)
 
 [sub_resource type="Gradient" id="Gradient_de08x"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -271,18 +273,11 @@ stream = ExtResource("4_jwbdq")
 volume_db = -10.505
 bus = &"Main"
 
-[node name="Area" type="Area2D" parent="." unique_id=1659372443]
-collision_layer = 3
-
-[node name="HomingSpear" type="CollisionShape2D" parent="Area" unique_id=1851431850]
-position = Vector2(0.5000006, 1.9999993)
-scale = Vector2(1.0000002, 1.0000002)
-shape = SubResource("RectangleShape2D_de08x")
-
 [node name="Beam" type="Area2D" parent="." unique_id=1197116219]
 visible = false
 z_index = -1
-collision_layer = 3
+collision_layer = 7
+collision_mask = 7
 
 [node name="BeamSpr1" type="Sprite2D" parent="Beam" unique_id=500753990]
 self_modulate = Color(1, 1, 1, 0.41568628)

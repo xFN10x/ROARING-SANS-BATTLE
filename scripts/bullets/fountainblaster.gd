@@ -10,14 +10,10 @@ func remove() -> void:
 	queue_free()
 
 func _ready() -> void:
-	$Area.body_entered.connect(func (other: Node2D):
-		if other.name == "Soul":
-			battleManager.damagePlr(randi_range(15,25))
-		)
-		
+	$Beam.visible = false
 	$Beam.body_entered.connect(func (other: Node2D):
 		if other.name == "Soul":
-			battleManager.damagePlr(randi_range(15,25))
+			battleManager.damagePlr(999999)
 		)
 	$Lazer.global_scale = Vector2(10000000, 1)
 	$Beam/CollisionShape2D.disabled = true
@@ -31,22 +27,35 @@ func _ready() -> void:
 	rotation = position.angle_to_point(target) + deg_to_rad(90)
 	$Animations.play("spawn")
 	await $Animations.animation_finished
-	await get_tree().create_timer(1).timeout
-	self.play("new_animation")
 	$Lazer.visible = false
+	for i in range(8):
+		$FountainPartcle.emitting = false
+		$FountainPartcle.emitting = true
+		$SndFountainTarget.play()
+		await get_tree().create_timer(0.07).timeout
+	play("default")
 	$Beam.visible = true
-	$SndArrow.play()
+	$Beam/begin.play("default")
+	await get_tree().create_timer(1.15).timeout
+	self.play("new_animation")
 	$Beam/CollisionShape2D.disabled = false
-	
-	var tween = get_tree().create_tween()
-	tween.tween_property($Beam/BeamSpr1, "self_modulate", Color.TRANSPARENT, .3)
-	tween.tween_property($Beam/BeamSpr2, "self_modulate", Color.TRANSPARENT, .3)
-	tween.tween_property($Beam/BeamSpr3, "self_modulate", Color.TRANSPARENT, .3)
-	tween.play()
-	moving = true
-	await get_tree().create_timer(.15).timeout
+	$SndFountainMake.play()
+	$SndArrow.play()
+	$Beam/begin.visible = false
+	$Beam/loop.visible = true
+	$Beam/loop.play("default")
+	$Beam/loop/loop2.play("default")
+	$Beam/loop/loop2/loop3.play("default")
+	$Beam/loop/loop2/loop3/loop4.play("default")
+	$Beam/loop/loop2/loop3/loop4/loop5.play("default")
+	$Beam/loop/loop2/loop3/loop4/loop5/loop6.play("default")
+	await get_tree().create_timer(7).timeout
 	$Beam/CollisionShape2D.disabled = true
-	
+	$BlackMain.emitting = false
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "modulate", Color.TRANSPARENT, 2)
+	tween.play()
+
 var vel = 1
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

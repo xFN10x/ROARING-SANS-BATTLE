@@ -1,15 +1,17 @@
 [gd_scene format=3 uid="uid://drg0i4fi152u7"]
 
-[ext_resource type="AudioStream" uid="uid://bmyubypm543pd" path="res://audio/song.mp3" id="1_th188"]
 [ext_resource type="Texture2D" uid="uid://5lk14w4ck3rb" path="res://sprites/Untitled1.png" id="2_4u087"]
 [ext_resource type="Script" uid="uid://drjqoqevkyadl" path="res://scripts/battle.gd" id="2_p1qf1"]
 [ext_resource type="AudioStream" uid="uid://qjbwpmsfoouc" path="res://audio/snd_squeak.wav" id="3_6vh42"]
 [ext_resource type="AudioStream" uid="uid://bxvooc8eqhlb" path="res://audio/snd_boost.wav" id="3_ikjs2"]
 [ext_resource type="Texture2D" uid="uid://bv3m4o5ij5hlb" path="res://sprites/battle.png" id="3_p1qf1"]
+[ext_resource type="AudioStream" uid="uid://o7lwik312evu" path="res://audio/snd_rudebuster_swing.wav" id="3_sattt"]
 [ext_resource type="AudioStream" uid="uid://bmgnpm5puewpo" path="res://audio/snd_select.wav" id="4_66ngm"]
-[ext_resource type="AudioStream" uid="uid://cfnfnghoo4e0m" path="res://audio/song2.mp3" id="4_f0g0v"]
+[ext_resource type="AudioStream" uid="uid://b6sfd7sekpjx7" path="res://audio/snd_rudebuster_hit.wav" id="4_jid5g"]
 [ext_resource type="AudioStream" uid="uid://utr2xn051h7k" path="res://audio/SND_TXT2.wav" id="4_v7i3o"]
+[ext_resource type="AudioStream" uid="uid://cmei5xoyq8jko" path="res://audio/flesh-impact.mp3" id="5_1i0gj"]
 [ext_resource type="AudioStream" uid="uid://bkgmpa4flrqos" path="res://audio/snd_laz.wav" id="6_vceff"]
+[ext_resource type="AudioStream" uid="uid://bop0bi21bxlns" path="res://audio/wtf.wav" id="7_4gblq"]
 [ext_resource type="FontVariation" uid="uid://cnsgsqotxvbxc" path="res://dio.tres" id="7_66ngm"]
 [ext_resource type="LabelSettings" uid="uid://c06m4ae3gy7q5" path="res://dio_label.tres" id="8_03edq"]
 [ext_resource type="AudioStream" uid="uid://bnpminwbqrfxd" path="res://audio/snd_hurt1.wav" id="8_ekamt"]
@@ -84,6 +86,24 @@ var Head: Sprite2D
 func _process(delta: float) -> void:
 	pass
 "
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmkwt"]
+atlas = ExtResource("19_8a2ah")
+region = Rect2(49, 95, 43, 41)
+
+[sub_resource type="Curve" id="Curve_drx85"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 3.3115218, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hxifo"]
+curve = SubResource("Curve_drx85")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e8dfo"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_max = 20.0
+scale_curve = SubResource("CurveTexture_hxifo")
+color = Color(1, 0, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ikjs2"]
 atlas = ExtResource("19_8a2ah")
@@ -195,6 +215,118 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector2(315, 116.00001)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("RArm:rotation")
+tracks/7/interp = 4
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("LArm:rotation")
+tracks/8/interp = 4
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_sattt"]
+resource_name = "hardhit"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [50.0, -45.0, 40.0, -35.0, 30.0, -25.0, 20.0, -15.0, 10.0, -5.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RArm:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.0666667, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(417.99997, 163.99998), Vector2(417.99997, 163.99998), Vector2(414, 143)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LArm:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.0666667, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(234, 155.00002), Vector2(234, 155.00002), Vector2(243, 140)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LArm:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.0666667, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.49785784, -0.49785784, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RArm:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.0666667, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.48946354, 0.48946354, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Head:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.0550088, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(315, 106.12), Vector2(315, 106.12), Vector2(315, 116.00001)]
+}
 
 [sub_resource type="Animation" id="Animation_8a2ah"]
 resource_name = "idle"
@@ -276,6 +408,7 @@ tracks/5/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ikjs2"]
 _data = {
 &"RESET": SubResource("Animation_fqtyt"),
+&"hardhit": SubResource("Animation_sattt"),
 &"idle": SubResource("Animation_8a2ah")
 }
 
@@ -851,22 +984,27 @@ position = Vector2(339.00003, 262.41953)
 scale = Vector2(1.5236366, 1.5584178)
 texture = SubResource("CompressedTexture2D_eivww")
 
+[node name="SndRudebusterSwing" type="AudioStreamPlayer" parent="." unique_id=1469890403]
+stream = ExtResource("3_sattt")
+pitch_scale = 0.6
+
+[node name="SndRudebusterHit" type="AudioStreamPlayer" parent="." unique_id=522333700]
+stream = ExtResource("4_jid5g")
+pitch_scale = 0.47
+
+[node name="FleshImpact" type="AudioStreamPlayer" parent="." unique_id=1250769934]
+stream = ExtResource("5_1i0gj")
+pitch_scale = 0.47
+
 [node name="SndBoost" type="AudioStreamPlayer" parent="." unique_id=1344363139]
 stream = ExtResource("3_ikjs2")
+bus = &"Main"
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=144461831]
-stream = ExtResource("1_th188")
+stream = ExtResource("7_4gblq")
 volume_db = -6.985
+autoplay = true
 bus = &"Main"
-playback_type = 1
-parameters/looping = true
-
-[node name="Music2" type="AudioStreamPlayer" parent="." unique_id=406096079]
-stream = ExtResource("4_f0g0v")
-volume_db = -6.985
-bus = &"Main"
-playback_type = 1
-parameters/looping = true
 
 [node name="MenuMove" type="AudioStreamPlayer" parent="." unique_id=1881623941]
 stream = ExtResource("3_6vh42")
@@ -888,6 +1026,7 @@ playback_type = 1
 
 [node name="Attack" type="AudioStreamPlayer" parent="." unique_id=526779786]
 stream = ExtResource("6_vceff")
+bus = &"Main"
 
 [node name="Damage" type="AudioStreamPlayer" parent="." unique_id=1199619940]
 stream = ExtResource("9_f0g0v")
@@ -919,6 +1058,7 @@ bus = &"Main"
 
 [node name="SndGraze" type="AudioStreamPlayer" parent="." unique_id=654416857]
 stream = ExtResource("15_at2n2")
+bus = &"Main"
 
 [node name="Undyne" type="Node2D" parent="." unique_id=1203616874]
 position = Vector2(0, -19)
@@ -931,6 +1071,17 @@ scale = Vector2(0.4299994, 0.4299994)
 texture = ExtResource("16_rwtbh")
 region_enabled = true
 region_rect = Rect2(111, 270, 402, 321)
+
+[node name="DeadBuster" type="GPUParticles2D" parent="Undyne/Body" unique_id=722963732]
+z_index = -1
+scale = Vector2(2.3255847, 2.3255847)
+emitting = false
+texture = SubResource("AtlasTexture_gmkwt")
+one_shot = true
+speed_scale = 1.8
+fixed_fps = 10
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_e8dfo")
 
 [node name="LArm" type="Sprite2D" parent="Undyne" unique_id=360628812]
 z_index = -1
@@ -1114,6 +1265,8 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_66ngm")
 
 [node name="Body" type="StaticBody2D" parent="Box/Box" unique_id=502716987]
+collision_layer = 12
+collision_mask = 12
 physics_material_override = SubResource("PhysicsMaterial_jt4d8")
 
 [node name="Shape" type="CollisionPolygon2D" parent="Box/Box/Body" unique_id=1581030355]
@@ -1245,6 +1398,8 @@ text = "60"
 [node name="Soul" type="CharacterBody2D" parent="." unique_id=1045820853]
 position = Vector2(320, 350)
 disable_mode = 1
+collision_layer = 20
+collision_mask = 20
 motion_mode = 1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Soul" unique_id=1997969071]

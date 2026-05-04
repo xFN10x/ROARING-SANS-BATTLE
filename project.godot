@@ -106,6 +106,12 @@ godmod={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_3="BattleBox"
+2d_physics/layer_4="BattleBoxNoSoul"
+2d_physics/layer_5="SoulHurtBox"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

@@ -92,28 +92,30 @@ var turn4box := Vector4(215.0, 215.0, 210.0, 174.0)
 
 var page := 0
 
+var defending = false
+
 
 var menuOptions := []
 	
 var food: Array[Item] = [
 	Item.new(90, "Snail Pie",  "Sn. Pie"),
 	Item.new(999, "Deluxe Buffet",  "D. Buffet"),
-	Item.new(40, "Dess Cookie",  "Cookie", "* You ate the Dess Cookie... your defense was increased for 2 turns!", func():
-		defenseIncreaseCounter += 2
+	Item.new(40, "Dess Cookie",  "Ds. Cookie", "* You ate one of Dess' Cookie... your defense was increased for 2 turns!", func():
+		defns += 0.5
 		$SndBoost.play()),
-	Item.new(40, "Dess Cookie",  "Cookie", "* You ate the Dess Cookie... your defense was increased for 2 turns!", func():
-		defenseIncreaseCounter += 2
+	Item.new(40, "Dess Cookie",  "Ds. Cookie", "* You ate one of Dess' Cookie... your defense was increased for 2 turns!", func():
+		defns += 0.5
 		$SndBoost.play()),
 	
 	Item.new(60, "Susie's Heart",  "S. Heart", "* You ate Susie's heart... Kris' attack increased!", func():
-		attackIncreaseCounter += 2
+		attk += 0.3
 		$SndBoost.play()),
 	Item.new(60, "Susie's Liver",  "S. Liver", "* You ate Susie's liver... Kris' attack increased!", func():
-		attackIncreaseCounter += 2
+		attk += 0.3
 		$SndBoost.play()),
 	Item.new(10, "Susie's Teeth",  "S. Teeth", "* You ate Susie's Teeth...  how are you supposed to eat these things?"),
 	Item.new(50, "Susie Piece",  "S. Piece", "* You ate part of Susie... Kris' attack increased!", func():
-		attackIncreaseCounter += 2
+		attk += 0.3
 		$SndBoost.play()),
 ]
 var menuMode := MenuMode.OPTION_MODE
@@ -123,8 +125,8 @@ var option1Node: Label
 var option2Node: Label
 var option3Node: Label
 
-var defenseIncreaseCounter := 0
-var attackIncreaseCounter := 0
+var defns := 1
+var attk := 1
 
 var defaultText := "* It's Sans."
 var texts: Array[String] = [
@@ -146,29 +148,29 @@ var currentText := defaultText
 var currentTextI := 0
 
 var sansText: Array[String] = [
-"You’re Attacks are pit full.",
-"You will not win this batel. Is it unwinable",
-"YOUR FEIND IS DEAD. YOU CANNOT DO THIS ALONE.",
-"The roaring has already, begun There is nothing you can do to stop it",
-"I will kill everyone and kill them again","Kris i hate you",
-"Are you evnen listening to me?", # loop
-"...",
-".......",
-"............?",
-"I’AM GETTING ANGRYER",
-"Why wont’nt you not die",
-"DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE ",
-"DIE DIE DIE NOW",
-"PLEASE",
-"I AM BEGGING JUST DIE",
-"YOU WILL BE KILLED BY ME AND IT WILL IT WILL YOU WILL DIE",
-"MY ROARING BLASTERS WILL INCINERTAE YOU NOW!",
-"MY ROARING BONES WILL STAB YOU TO DEATH",
-"PLEASE",
-"DIE",
-"Plllllaase die now istnalntly",
-"DIE DIE DEID EID EIDE DEID EIED EID EID EID EID DIE DIE DIE DIE DIED EI",
-"DIE DIE DIE DIE DIE DIE DIE",
+	"You’re Attacks are pit full.",
+	"You will not win this batel. Is it unwinable",
+	"YOUR FEIND IS DEAD. YOU CANNOT DO THIS ALONE.",
+	"The roaring has already, begun There is nothing you can do to stop it",
+	"I will kill everyone and kill them again","Kris i hate you",
+	"Are you evnen listening to me?", # loop
+	"...",
+	".......",
+	"............?",
+	"I’AM GETTING ANGRYER",
+	"Why wont’nt you not die",
+	"DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE DIE ",
+	"DIE DIE DIE NOW",
+	"PLEASE",
+	"I AM BEGGING JUST DIE",
+	"YOU WILL BE KILLED BY ME AND IT WILL IT WILL YOU WILL DIE",
+	"MY ROARING BLASTERS WILL INCINERTAE YOU NOW!",
+	"MY ROARING BONES WILL STAB YOU TO DEATH",
+	"PLEASE",
+	"DIE",
+	"Plllllaase die now istnalntly",
+	"DIE DIE DEID EID EIDE DEID EIED EID EID EID EID DIE DIE DIE DIE DIED EI",
+	"DIE DIE DIE DIE DIE DIE DIE",
 ]
 var textLoc := 0
 var currentdia := 0
@@ -197,7 +199,7 @@ var greenSoulProtectRight: Tween
 var greenSoulRotate = deg_to_rad(90)
 
 var checkText: String = """* ROARING SANS - ATK -∞ DEF -∞
-* He was a shopkeeper, now hes
+* He was a shopkeeper, now he's
 	this.
 """
 
@@ -329,6 +331,14 @@ func spawnHomingArrow(sca: Vector2 = Vector2(1,1), pos := Vector2(randi_range(0,
 	bullet.target = target
 	Bullets.add_child(bullet)
 	
+func spawnFountainBlaset(sca: Vector2 = Vector2(1,1), pos := Vector2(randi_range(0,640), randi_range(0,480)), target := Vector2(soulNode.global_position.x + randi_range(-20,20), soulNode.global_position.y + randi_range(-20,20))):
+	var bullet: FountainBlaster = preload("res://scripts/bullets/fountainblaster.tscn").instantiate()
+	bullet.battleManager = self
+	bullet.position = pos
+	bullet.scale = sca
+	bullet.target = target
+	Bullets.add_child(bullet)
+	
 func spawnBone(scale: Vector2, pos : Vector2, speed := Vector2.LEFT):
 	var bullet: RoaringBone = preload("res://scripts/bullets/bone.tscn").instantiate()
 	bullet.battleManager = self
@@ -402,8 +412,9 @@ func damagePlr(number: int) -> void:
 		death();
 		return
 	totalDamageTaken += number
-	if defenseIncreaseCounter > 0:
-		number *= 0.5
+	number /= defns
+	if defending:
+		number /= 2 
 	if not godmode:
 		hp -= number
 	$SndHurt1.play()
@@ -490,6 +501,10 @@ func _ready() -> void:
 )
 
 func endAttack() -> void:
+	if defns > 1:
+		defns -= 0.1
+	if attk > 1:
+		attk -= 0.1
 	actualNoMode = true
 	menuMode = MenuMode.NO_MODE;
 	for node in Bullets.get_children():
@@ -515,6 +530,35 @@ func greensoul() -> void:
 	soulNode.position = greenSoulPos
 	soulNode.visible = true
 	mainSoulMode = SoulMode.GREEN
+
+func doDamage(damage: int):
+	print("attack is: " + str(attk))
+	damage *= attk
+	$HealthBar/DamageNumbers.text = str(roundi(damage))
+	enemyHealth -= damage
+	print("enemy now at: "+str(enemyHealth)+" hp")
+	if enemyHealth <= 0:
+		AudioServer.set_bus_mute(1, true)
+		$GlobalAnimations.play("end")
+		return
+	var barTween = get_tree().create_tween()
+	barTween.tween_property($HealthBar/Bar, "value", enemyHealth, 1).set_trans(Tween.TRANS_LINEAR)
+	knifeAnimationNode.visible = false
+	enemyHitSound.play()
+	$Undyne/Animation.play("RESET" if damage < 6000000 else "hardhit")
+	$HealthBar.visible = true
+	barTween.play()
+	await get_tree().create_timer(.7).timeout
+	await get_tree().create_timer(1).timeout
+	$Undyne/Animation.play("idle")
+	$HealthBar.visible = false
+	attackTargetAnimation.play_backwards()
+	attackIndicBar.position.x = -99999
+	if currentdia >= sansText.size():
+		currentdia = 5
+	menuMode = MenuMode.NO_MODE
+	showText(sansText.get(currentdia), 1)
+	currentdia += 1
 
 func changeSoul() -> void:
 	if soulMode == SoulMode.GREEN:
@@ -564,8 +608,8 @@ func attack() -> void:
 				spawnBone(Vector2(1.37, 1.37), Vector2(730, 348.0))
 				await get_tree().create_timer(time).timeout
 			
-			spawnHomingArrow(Vector2(2,2.2), Vector2(500, 252), Vector2(700, 252))
-			spawnHomingArrow(Vector2(2,2.2), Vector2(500, 348), Vector2(700, 348))
+			spawnHomingArrow(Vector2(1.5,2), Vector2(500, 252), Vector2(700, 252))
+			spawnHomingArrow(Vector2(1.5,2), Vector2(500, 348), Vector2(700, 348))
 			
 			spawnBone(Vector2(1.37, 1.37), Vector2(730, 252))
 			await get_tree().create_timer(time).timeout
@@ -579,18 +623,42 @@ func attack() -> void:
 			redsoul(turn4box)
 			var time = 0.1
 			var counter = 0
-			for i in range(10):
-				for i2 in range(10):
-					spawnBone(Vector2(1, 1), Vector2(730, 230 + (sin(counter /2) * 20)))
-					spawnBone(Vector2(1, 1), Vector2(730, 368 + (sin(counter /2) * 20)))
-					counter += 1
-					await get_tree().create_timer(time).timeout
-				var pos = randf_range(242.0, 399.0)
-				spawnHomingArrow(Vector2(1.5,2), Vector2(pos, 143), Vector2(pos, 0))
+			for i in range(50):
+				spawnBone(Vector2(1, 1), Vector2(730, 230 + (sin(counter /2) * 20)))
+				spawnBone(Vector2(1, 1), Vector2(730, 368 + (sin(counter /2) * 20)))
+				counter += 1
+				await get_tree().create_timer(time).timeout
 			
+			var yy = $Box.global_position.y + 100
+			spawnFountainBlaset(Vector2(4,4), Vector2(500, yy), Vector2(700, yy))
+			await get_tree().create_timer(13).timeout
+		6:
+			await setBoxPos(turn1box) 
+			redsoul(turn1box)
 			
-			await get_tree().create_timer(2).timeout
+			for i in range(5):
+				spawnFountainBlaset(Vector2(-1.5, -1.5))
+				await get_tree().create_timer(0.1).timeout
 			
+			await get_tree().create_timer(3).timeout
+		7:
+			await setBoxPos(turn1box) 
+			redsoul(turn1box)
+			
+			for i in range(15):
+				spawnFountainBlaset(Vector2(-.8, -1.5))
+				await get_tree().create_timer(0.06).timeout
+			
+			await get_tree().create_timer(8).timeout
+		8:
+			await setBoxPos(turn1box) 
+			redsoul(turn1box)
+			
+			for i in range(15):
+				spawnFountainBlaset(Vector2(-.8, -1.5))
+				await get_tree().create_timer(0.06).timeout
+			
+			await get_tree().create_timer(8).timeout
 	await get_tree().create_timer(1).timeout
 	if paused: return
 	if mainSoulMode == SoulMode.GREEN: $GlobalAnimations.play_backwards("fade")
@@ -611,12 +679,7 @@ func _process(delta: float) -> void:
 	
 	var a = (min(currentdia, 10) if currentdia != 0 else 0) * .2
 	var a2 = a - 5 * .2
-	
-	if defenseIncreaseCounter > 0:
-		defenseIncreaseCounter -= 1
-	if attackIncreaseCounter > 0:
-		attackIncreaseCounter -= 1
-	
+		
 	$BG.modulate = Color.from_hsv(clr.h + 0.005 * mult,clr.s,clr.v, a)
 	$BG/GPUParticles2D.self_modulate = Color(1,1,1,a2)
 	if paused:
@@ -718,35 +781,11 @@ func _process(delta: float) -> void:
 				knifeAnimationNode.play()
 				knifeSound.play()
 				var random := randi_range(-83431, 2143234)
-				var damage: int = 2523567 - abs((2251143 * (attackIndicBar.position.x - (240)) / 240)) + random
-				if attackIncreaseCounter > 0:
-					damage *= 2
-				$HealthBar/DamageNumbers.text = str(roundi(damage))
-				enemyHealth -= damage
-				print("enemy now at: "+str(enemyHealth)+" hp")
-				if enemyHealth <= 0:
-					AudioServer.set_bus_mute(1, true)
-					$GlobalAnimations.play("end")
-					return
-				var barTween = get_tree().create_tween()
-				barTween.tween_property($HealthBar/Bar, "value", enemyHealth, 1).set_trans(Tween.TRANS_LINEAR)
+				var attackBar : float = 1 - abs((attackIndicBar.position.x - 320) / 320)
+				tp += attackBar * 7 + randi_range(-1,4)
+				var damage: int = 2523567 + abs(251143 * (attackBar * 3)) + random
 				await get_tree().create_timer(0.8).timeout
-				knifeAnimationNode.visible = false
-				enemyHitSound.play()
-				$Undyne/Animation.play("RESET")
-				$HealthBar.visible = true
-				barTween.play()
-				await get_tree().create_timer(.7).timeout
-				await get_tree().create_timer(1).timeout
-				$Undyne/Animation.play("idle")
-				$HealthBar.visible = false
-				attackTargetAnimation.play_backwards()
-				attackIndicBar.position.x = -99999
-				if currentdia >= sansText.size():
-					currentdia = 5
-				menuMode = MenuMode.NO_MODE
-				showText(sansText.get(currentdia), 1)
-				currentdia += 1
+				doDamage(damage)
 		MenuMode.ENEMY_TURN:
 			option0Node.visible = false
 			option1Node.visible = false
@@ -824,7 +863,8 @@ func _process(delta: float) -> void:
 					1:
 						enemyHealthBar.visible = false
 						menuOptions = [
-							"Check"
+							"Check",
+							"Dead Buster (100% TP)"
 						]
 						menuMode = MenuMode.ITEM
 					2:
@@ -834,7 +874,7 @@ func _process(delta: float) -> void:
 						menuMode = MenuMode.ITEM
 					3:
 						tp = min(100, tp + 16)
-						defenseIncreaseCounter = 1
+						defending = true
 						if currentdia >= sansText.size():
 							currentdia = 5
 						menuMode = MenuMode.NO_MODE
@@ -938,6 +978,21 @@ func _process(delta: float) -> void:
 					showText(checkText)
 				elif str(menuOptions[selectedButton + offset]) == "Spare":
 					attack()
+				elif str(menuOptions[selectedButton + offset]) == "Dead Buster (100% TP)":
+					if tp >= 100:
+						currentText = ""
+						var random := randi_range(1243153, 5143234)
+						var damage: int = 10000000 + random
+						$Undyne/Body/DeadBuster.emitting = true
+						$SndRudebusterSwing.play()
+						await get_tree().create_timer(1).timeout
+						doDamage(damage)
+						$SndRudebusterHit.play()
+						$FleshImpact.play()
+						tp = 0
+						return
+					else:
+						return
 				elif str(menuOptions[selectedButton + offset]) == enemyName:
 					attackTargetAnimation.play("in")
 					canAttack = false

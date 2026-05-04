@@ -1,40 +1,88 @@
 [gd_scene format=3 uid="uid://by8i5t05b4f7e"]
 
-[ext_resource type="Texture2D" uid="uid://bidbpxwu4vgia" path="res://sprites/ddkc2sy-707e75f5-6c22-4b37-a974-52de9e89de05.png" id="1_ixfkm"]
+[ext_resource type="Texture2D" uid="uid://cy2k48rrsr54f" path="res://sprites/blasters.png" id="1_vqka6"]
 [ext_resource type="Script" uid="uid://boa58lbfiqji7" path="res://scripts/bullets/fountainblaster.gd" id="2_guf0t"]
 [ext_resource type="AudioStream" uid="uid://b1sudl20cgb0p" path="res://audio/mus_sfx_segapower.wav" id="3_2wod7"]
+[ext_resource type="AudioStream" uid="uid://c1b64v2h8o1ah" path="res://audio/snd_fountain_make.ogg" id="3_pwcl8"]
+[ext_resource type="AudioStream" uid="uid://dvnawyl4b8yg6" path="res://audio/snd_fountain_target.ogg" id="3_rs5t1"]
 [ext_resource type="AudioStream" uid="uid://d227rqkf3le2g" path="res://audio/mus_sfx_rainbowbeam_1.wav" id="4_5u2ic"]
 [ext_resource type="Texture2D" uid="uid://dngdiqmt2xmjt" path="res://sprites/red_soul_normal.png" id="5_deii0"]
-[ext_resource type="Texture2D" uid="uid://c8axj0ourjp0i" path="res://sprites/blackole.png" id="6_vqka6"]
+[ext_resource type="Texture2D" uid="uid://c8axj0ourjp0i" path="res://sprites/blackole.png" id="6_guf0t"]
+[ext_resource type="Texture2D" uid="uid://cegtwui0o3ero" path="res://sprites/spr_titan_fountain_burst/spr_titan_fountain_burst_0.png" id="7_nnyof"]
+[ext_resource type="Texture2D" uid="uid://75gnfi0fbccq" path="res://sprites/startthing.png" id="7_ygwi7"]
+[ext_resource type="Texture2D" uid="uid://cugjs2vkvfgcr" path="res://sprites/starthing2.png" id="8_rs5t1"]
+[ext_resource type="Texture2D" uid="uid://3avxm8g3mbkb" path="res://sprites/spr_titan_fountain_burst/spr_titan_fountain_burst_1.png" id="8_tub2j"]
+[ext_resource type="Texture2D" uid="uid://bhdesturjtasu" path="res://sprites/spr_titan_fountain_burst/spr_titan_fountain_burst_2.png" id="9_uja17"]
+[ext_resource type="Texture2D" uid="uid://b8umpjcb4pnps" path="res://sprites/spr_titan_fountain_burst/spr_titan_fountain_burst_3.png" id="10_qtiri"]
+[ext_resource type="Texture2D" uid="uid://tbhp7w3ifhcg" path="res://sprites/spr_titan_fountain_burst/spr_titan_fountain_burst_4.png" id="11_tarvc"]
+[ext_resource type="Texture2D" uid="uid://r65alcoks2by" path="res://sprites/spr_titan_fountain_burst/spr_titan_fountain_burst_5.png" id="12_37hrm"]
+[ext_resource type="Texture2D" uid="uid://cx01s4u8jtmd1" path="res://sprites/spr_titan_fountain_burst/spr_titan_fountain_burst_6.png" id="13_h4eeh"]
+[ext_resource type="Texture2D" uid="uid://c6x067kh5viyv" path="res://sprites/spr_titan_fountain_burst/spr_titan_fountain_burst_7.png" id="14_wj512"]
+[ext_resource type="Texture2D" uid="uid://coddacs5h7c7q" path="res://sprites/spr_titan_fountain_burst/spr_titan_fountain_burst_8.png" id="15_n0rtv"]
+[ext_resource type="Texture2D" uid="uid://drfet0ho0wocd" path="res://sprites/spr_titan_fountain_burst/spr_titan_fountain_burst_9.png" id="16_153kc"]
+[ext_resource type="Texture2D" uid="uid://3dv8j5hgu5c2" path="res://sprites/spr_titan_fountain_burst/spr_titan_fountain_burst_10.png" id="17_w6yb5"]
+[ext_resource type="Texture2D" uid="uid://2umiwjkvdf6m" path="res://sprites/spr_titan_fountain_burst/spr_titan_fountain_burst_11.png" id="18_y8gsm"]
+[ext_resource type="Texture2D" uid="uid://btuy5vrudx7ue" path="res://sprites/spr_titan_fountain_burst/spr_titan_fountain_burst_12.png" id="19_brbuu"]
+[ext_resource type="Texture2D" uid="uid://vm5lluun6m76" path="res://sprites/spr_titan_fountain_burst/spr_titan_fountain_burst_13.png" id="20_gvvv7"]
+[ext_resource type="Texture2D" uid="uid://c88tv0bnedwnv" path="res://sprites/spr_titan_fountain_burst/spr_titan_fountain_burst_14.png" id="21_lbloe"]
+[ext_resource type="Texture2D" uid="uid://cwpqyfbcl1to8" path="res://sprites/spr_titan_fountain_loop/spr_titan_fountain_loop_0.png" id="22_drg77"]
+[ext_resource type="Texture2D" uid="uid://bq3rcb4dmvbq6" path="res://sprites/spr_titan_fountain_loop/spr_titan_fountain_loop_1.png" id="23_6ol22"]
+[ext_resource type="Texture2D" uid="uid://d2ggcrkhhlkom" path="res://sprites/spr_titan_fountain_loop/spr_titan_fountain_loop_2.png" id="24_b2pmo"]
+[ext_resource type="Texture2D" uid="uid://dw4m8oqp3txjp" path="res://sprites/spr_titan_fountain_loop/spr_titan_fountain_loop_3.png" id="25_n2vkq"]
+[ext_resource type="Texture2D" uid="uid://dn43tw14deuns" path="res://sprites/spr_titan_fountain_loop/spr_titan_fountain_loop_4.png" id="26_uchyo"]
+[ext_resource type="Texture2D" uid="uid://cap2rgxb78553" path="res://sprites/spr_titan_fountain_loop/spr_titan_fountain_loop_5.png" id="27_m83in"]
+[ext_resource type="Texture2D" uid="uid://cuukqpckwcwml" path="res://sprites/spr_titan_fountain_loop/spr_titan_fountain_loop_6.png" id="28_27f4c"]
+[ext_resource type="Texture2D" uid="uid://d5svsc13r0sh" path="res://sprites/spr_titan_fountain_loop/spr_titan_fountain_loop_7.png" id="29_bd5pr"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jwbdq"]
-atlas = ExtResource("1_ixfkm")
-region = Rect2(5, 17, 42, 57)
+[sub_resource type="AtlasTexture" id="AtlasTexture_rs5t1"]
+atlas = ExtResource("1_vqka6")
+region = Rect2(0, 57, 57, 57)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k0hfq"]
-atlas = ExtResource("1_ixfkm")
-region = Rect2(189, 17, 44, 57)
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwcl8"]
+atlas = ExtResource("1_vqka6")
+region = Rect2(57, 57, 57, 57)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mw48w"]
-atlas = ExtResource("1_ixfkm")
-region = Rect2(238, 17, 44, 57)
+[sub_resource type="AtlasTexture" id="AtlasTexture_af6h4"]
+atlas = ExtResource("1_vqka6")
+region = Rect2(114, 57, 57, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_negvj"]
+atlas = ExtResource("1_vqka6")
+region = Rect2(171, 57, 57, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_guyhw"]
+atlas = ExtResource("1_vqka6")
+region = Rect2(228, 57, 57, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqs2y"]
+atlas = ExtResource("1_vqka6")
+region = Rect2(285, 57, 57, 57)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3a38f"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jwbdq")
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_rs5t1")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_pwcl8")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_af6h4")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_negvj")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 0.3,
-"texture": SubResource("AtlasTexture_k0hfq")
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_guyhw")
 }, {
-"duration": 0.3,
-"texture": SubResource("AtlasTexture_mw48w")
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_hqs2y")
 }],
 "loop": true,
 "name": &"new_animation",
@@ -70,22 +118,10 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Area/HomingSpear:disabled")
+tracks/2/path = NodePath("Lazer:self_modulate:a")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Lazer:self_modulate:a")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -119,25 +155,13 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0, 1.0]
 }
-tracks/2/type = "value"
+tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Area/HomingSpear:disabled")
+tracks/2/path = NodePath("SegaPower")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("SegaPower")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -145,13 +169,13 @@ tracks/3/keys = {
 "method": &"play"
 }]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Lazer:self_modulate:a")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Lazer:self_modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -164,94 +188,96 @@ _data = {
 &"spawn": SubResource("Animation_mw48w")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_de08x"]
-size = Vector2(34.999992, 39.999992)
-
-[sub_resource type="Gradient" id="Gradient_de08x"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_jwbdq"]
-gradient = SubResource("Gradient_de08x")
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jwbdq"]
 size = Vector2(26, 4168.006)
 
-[sub_resource type="Animation" id="Animation_de08x"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BeamSpr1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(18, 6199.93)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("BeamSpr2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(18, 6199.93)]
-}
+[sub_resource type="SpriteFrames" id="SpriteFrames_nnyof"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("7_nnyof")
+}, {
+"duration": 0.5,
+"texture": ExtResource("8_tub2j")
+}, {
+"duration": 0.5,
+"texture": ExtResource("9_uja17")
+}, {
+"duration": 0.5,
+"texture": ExtResource("10_qtiri")
+}, {
+"duration": 0.5,
+"texture": ExtResource("11_tarvc")
+}, {
+"duration": 0.5,
+"texture": ExtResource("12_37hrm")
+}, {
+"duration": 0.5,
+"texture": ExtResource("13_h4eeh")
+}, {
+"duration": 0.5,
+"texture": ExtResource("14_wj512")
+}, {
+"duration": 0.5,
+"texture": ExtResource("15_n0rtv")
+}, {
+"duration": 0.5,
+"texture": ExtResource("16_153kc")
+}, {
+"duration": 0.5,
+"texture": ExtResource("17_w6yb5")
+}, {
+"duration": 0.5,
+"texture": ExtResource("18_y8gsm")
+}, {
+"duration": 0.5,
+"texture": ExtResource("19_brbuu")
+}, {
+"duration": 0.5,
+"texture": ExtResource("20_gvvv7")
+}, {
+"duration": 0.5,
+"texture": ExtResource("21_lbloe")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
-[sub_resource type="Animation" id="Animation_jwbdq"]
-resource_name = "beam"
-length = 0.1
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BeamSpr1:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(18, 6199.93), Vector2(20, 6199.93)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("BeamSpr2:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(8, 6199.93), Vector2(10, 6199.93)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("BeamSpr3:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(13, 6199.93), Vector2(13, 6199.93)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_i062b"]
-_data = {
-&"RESET": SubResource("Animation_de08x"),
-&"beam": SubResource("Animation_jwbdq")
-}
+[sub_resource type="SpriteFrames" id="SpriteFrames_74nol"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_drg77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_6ol22")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_b2pmo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_n2vkq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_uchyo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_m83in")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_27f4c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_bd5pr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Curve" id="Curve_ygwi7"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.05384615, 0.9897335), 0.0, 0.0, 0, 0, Vector2(0.5, 0.82546896), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.14136127, 0.8210291), 0.0, 0.0, 0, 0, Vector2(0.5078534, 0.5883669), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_rs5t1"]
@@ -259,7 +285,7 @@ curve = SubResource("Curve_ygwi7")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pwcl8"]
 particle_flag_disable_z = true
-emission_shape_scale = Vector3(20, 18, 2)
+emission_shape_scale = Vector3(25, 25, 2)
 emission_shape = 1
 emission_sphere_radius = 1.0
 angle_min = -59.99999
@@ -269,68 +295,118 @@ scale_min = 0.19999999
 scale_max = 0.19999999
 scale_curve = SubResource("CurveTexture_rs5t1")
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vqka6"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_pwcl8"]
+frames = 2
+speed_scale = 5.1
+frame_0/texture = ExtResource("7_ygwi7")
+frame_0/duration = 0.9
+frame_1/texture = ExtResource("8_rs5t1")
+frame_1/duration = 1.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_38d0q"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(25, 25, 2)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 1.3299999
+anim_speed_max = 1.3299999
+
 [node name="FountainBlaster" type="AnimatedSprite2D" unique_id=1698446676]
 z_index = 1
 z_as_relative = false
 scale = Vector2(-0.99999857, -0.99999857)
 sprite_frames = SubResource("SpriteFrames_3a38f")
+frame_progress = 0.8216717
 script = ExtResource("2_guf0t")
 metadata/_custom_type_script = "uid://boa58lbfiqji7"
 
 [node name="Animations" type="AnimationPlayer" parent="." unique_id=443985661]
 libraries/ = SubResource("AnimationLibrary_3a38f")
 
+[node name="SndFountainMake" type="AudioStreamPlayer" parent="." unique_id=1677965101]
+stream = ExtResource("3_pwcl8")
+bus = &"Main"
+
+[node name="SndFountainTarget" type="AudioStreamPlayer" parent="." unique_id=872529795]
+stream = ExtResource("3_rs5t1")
+bus = &"Main"
+playback_type = 1
+
 [node name="SegaPower" type="AudioStreamPlayer" parent="." unique_id=1780325815]
 stream = ExtResource("3_2wod7")
-volume_db = -10.505
+volume_db = -5.153
+pitch_scale = 0.58
 bus = &"Main"
 
 [node name="SndArrow" type="AudioStreamPlayer" parent="." unique_id=335889670]
 stream = ExtResource("4_5u2ic")
-volume_db = -10.505
+volume_db = 4.407
+pitch_scale = 0.36
 bus = &"Main"
 
-[node name="Area" type="Area2D" parent="." unique_id=1659372443]
-collision_layer = 3
-
-[node name="HomingSpear" type="CollisionShape2D" parent="Area" unique_id=1851431850]
-position = Vector2(0.5000006, 1.9999993)
-scale = Vector2(1.0000002, 1.0000002)
-shape = SubResource("RectangleShape2D_de08x")
-
 [node name="Beam" type="Area2D" parent="." unique_id=1197116219]
-visible = false
 z_index = -1
-collision_layer = 3
-
-[node name="BeamSpr1" type="Sprite2D" parent="Beam" unique_id=500753990]
-self_modulate = Color(1, 1, 1, 0.41568628)
-position = Vector2(18, 6199.93)
-rotation = 1.5707964
-scale = Vector2(48.36006, 26.490456)
-texture = SubResource("GradientTexture1D_jwbdq")
-
-[node name="BeamSpr2" type="Sprite2D" parent="Beam" unique_id=590897313]
-self_modulate = Color(1, 1, 1, 0.4627451)
-position = Vector2(18, 6199.93)
-rotation = 1.5707964
-scale = Vector2(48.36006, 26.490456)
-texture = SubResource("GradientTexture1D_jwbdq")
-
-[node name="BeamSpr3" type="Sprite2D" parent="Beam" unique_id=946782369]
-position = Vector2(13, 6199.93)
-rotation = 1.5707964
-scale = Vector2(48.36006, 26.490456)
-texture = SubResource("GradientTexture1D_jwbdq")
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Beam" unique_id=2079222512]
+z_index = 2
 position = Vector2(0, 2074.003)
 shape = SubResource("RectangleShape2D_jwbdq")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Beam" unique_id=2025482942]
-libraries/ = SubResource("AnimationLibrary_i062b")
+[node name="begin" type="AnimatedSprite2D" parent="Beam" unique_id=2116423486]
+position = Vector2(-7.6738876e-13, 148.00021)
+rotation = 3.1415927
+scale = Vector2(-0.2859021, 0.3341333)
+sprite_frames = SubResource("SpriteFrames_nnyof")
+
+[node name="loop" type="AnimatedSprite2D" parent="Beam" unique_id=532545985]
+visible = false
+position = Vector2(8.1001807e-13, 57.000076)
+rotation = 3.1415927
+scale = Vector2(-0.16590132, 0.19388857)
+sprite_frames = SubResource("SpriteFrames_74nol")
+frame_progress = 1.0
+
+[node name="loop2" type="AnimatedSprite2D" parent="Beam/loop" unique_id=1211585838]
+position = Vector2(4.4949535e-05, -439.9447)
+sprite_frames = SubResource("SpriteFrames_74nol")
+frame = 7
+frame_progress = 1.0
+
+[node name="loop3" type="AnimatedSprite2D" parent="Beam/loop/loop2" unique_id=1193219400]
+position = Vector2(4.4949535e-05, -439.94507)
+sprite_frames = SubResource("SpriteFrames_74nol")
+frame_progress = 1.0
+
+[node name="loop4" type="AnimatedSprite2D" parent="Beam/loop/loop2/loop3" unique_id=1262731723]
+position = Vector2(4.5001987e-05, -440.458)
+scale = Vector2(1, 1.0000001)
+sprite_frames = SubResource("SpriteFrames_74nol")
+frame_progress = 1.0
+
+[node name="loop5" type="AnimatedSprite2D" parent="Beam/loop/loop2/loop3/loop4" unique_id=256640310]
+position = Vector2(4.4949535e-05, -439.9447)
+sprite_frames = SubResource("SpriteFrames_74nol")
+frame = 7
+frame_progress = 1.0
+
+[node name="loop6" type="AnimatedSprite2D" parent="Beam/loop/loop2/loop3/loop4/loop5" unique_id=161593580]
+position = Vector2(4.4949535e-05, -439.94507)
+sprite_frames = SubResource("SpriteFrames_74nol")
+frame_progress = 1.0
 
 [node name="Lazer" type="Sprite2D" parent="." unique_id=1620463911]
+visible = false
 modulate = Color(1, 0, 0, 1)
 self_modulate = Color(1, 1, 1, 0)
 position = Vector2(-1.4305115e-06, 0)
@@ -340,9 +416,20 @@ texture = ExtResource("5_deii0")
 region_enabled = true
 region_rect = Rect2(8, 7, 1, 2)
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1130411671]
+[node name="BlackMain" type="GPUParticles2D" parent="." unique_id=1130411671]
 z_index = -1
-amount = 80
-texture = ExtResource("6_vqka6")
-lifetime = 9.549999999999999
+position = Vector2(1.0000014, 1.0000014)
+amount = 100
+texture = ExtResource("6_guf0t")
+lifetime = 8.4
 process_material = SubResource("ParticleProcessMaterial_pwcl8")
+
+[node name="FountainPartcle" type="GPUParticles2D" parent="." unique_id=564894139]
+z_index = 1
+material = SubResource("CanvasItemMaterial_vqka6")
+position = Vector2(1.0000014, 1.0000014)
+emitting = false
+texture = SubResource("AnimatedTexture_pwcl8")
+lifetime = 0.8
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_38d0q")

@@ -31,7 +31,8 @@ alpha_curve = SubResource("CurveTexture_sxv2p")
 
 [node name="RoaringBone" type="Area2D" unique_id=396810163]
 z_index = 1
-collision_layer = 3
+collision_layer = 7
+collision_mask = 7
 script = ExtResource("1_sxv2p")
 metadata/_custom_type_script = "uid://cgk5xjc14i8y5"
 
